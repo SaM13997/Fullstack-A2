@@ -1,5 +1,13 @@
+import { useNavigate } from 'react-router'
+
 const EmployeeTable = (props) => {
 	const { employees } = props
+
+	const navigate = useNavigate()
+
+	const handleRowClick = (id) => {
+		navigate(`/employees/${id}`)
+	}
 
 	return (
 		<div className=" overflow-hidden p-2">
@@ -28,7 +36,11 @@ const EmployeeTable = (props) => {
 					</thead>
 					<tbody>
 						{employees.map((employee) => (
-							<tr key={employee._id} className="border-b">
+							<tr
+								key={employee._id}
+								onClick={() => handleRowClick(employee._id)}
+								className="border-b cursor-pointer hover:bg-amber-200"
+							>
 								<td className="px-4 py-2 border border-zinc-700">
 									{employee.FirstName}
 								</td>
