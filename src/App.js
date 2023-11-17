@@ -1,14 +1,11 @@
 import './App.css'
-import Home from './components/Home'
 import {
 	BrowserRouter as Router,
 	Route,
-	Link,
 	Routes,
 	Navigate,
 } from 'react-router-dom'
 
-import EmployeeTable from './components/EmployeeTable'
 import EmployeeCreate from './components/EmployeeCreate'
 import EmployeeSearch from './components/EmployeeSearch'
 
@@ -34,7 +31,10 @@ function App() {
 						<Route path="search" element={<EmployeeSearch />} />
 						<Route path=":id" element={<EmployeeDetails />} />
 					</Route>
-					<Route path="*" element={<p>Not found</p>} />
+					<Route
+						path="*"
+						element={<p className="text-[15rem] text-white">Not found</p>}
+					/>
 				</Routes>
 			</ApolloProvider>
 		</Router>

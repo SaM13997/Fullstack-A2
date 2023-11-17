@@ -42,6 +42,10 @@ const typeDefs = gql`
 		Contract
 		Seasonal
 	}
+	enum CurrentStatusEnum {
+		Working
+		Retired
+	}
 
 	type Employee {
 		_id: ID
@@ -58,6 +62,7 @@ const typeDefs = gql`
 	type Query {
 		employees: [Employee]
 		searchEmployees(input: SearchCriteria): [Employee]
+		employeeDetails(_id: ID!): Employee
 	}
 	input SearchCriteria {
 		FirstName: String
@@ -70,6 +75,8 @@ const typeDefs = gql`
 	}
 	type Mutation {
 		createEmployee(input: EmployeeInput!): Employee
+		updateEmployee(_id: ID!, input: UpdateEmployeeInput!): Employee
+		deleteEmployee(_id: ID!): Employee
 	}
 
 	input EmployeeInput {
@@ -81,6 +88,11 @@ const typeDefs = gql`
 		Department: String!
 		EmployeeType: String!
 		CurrentStatus: Boolean!
+	}
+	input UpdateEmployeeInput {
+		Title: String
+		Department: String
+		CurrentStatus: String
 	}
 `
 module.exports = typeDefs

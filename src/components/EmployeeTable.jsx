@@ -10,7 +10,7 @@ const EmployeeTable = (props) => {
 	}
 
 	return (
-		<div className=" overflow-hidden p-2">
+		<div className=" overflow-hidden">
 			<h2 className="text-lg font-semibold text-gray-800 py-2 px-4 bg-gray-200">
 				Employee Table
 			</h2>
@@ -35,7 +35,7 @@ const EmployeeTable = (props) => {
 						</tr>
 					</thead>
 					<tbody>
-						{employees.map((employee) => (
+						{employees?.map((employee) => (
 							<tr
 								key={employee._id}
 								onClick={() => handleRowClick(employee._id)}

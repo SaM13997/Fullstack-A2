@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import EmployeeTable from './EmployeeTable'
 
 const graphqlQuery = `
   query SearchEmployees($searchParams: SearchCriteria) {
@@ -16,7 +17,9 @@ const graphqlQuery = `
   }
 `
 
-const EmployeeSearch = ({ setFilteredData }) => {
+const EmployeeSearch = ({}) => {
+	const [tableData, setTableData] = useState(null)
+	console.log('tableData', tableData)
 	const [searchParams, setSearchParams] = useState({
 		FirstName: '',
 		LastName: '',
@@ -43,7 +46,7 @@ const EmployeeSearch = ({ setFilteredData }) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setFilteredData(data.data.searchEmployees)
+				setTableData(data.data.searchEmployees)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -201,6 +204,7 @@ const EmployeeSearch = ({ setFilteredData }) => {
 			>
 				Search
 			</button>
+			{tableData && <EmployeeTable employees={tableData} />}
 		</div>
 	)
 }

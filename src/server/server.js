@@ -26,7 +26,7 @@ async function startServer() {
 	// Start Apollo Server
 	await server.start()
 
-	// Apply Apollo Server middleware to your Express app
+	// Apply Apollo Server middleware to the Express app
 	server.applyMiddleware({ app, path: '/graphql' })
 
 	// Start the Express server

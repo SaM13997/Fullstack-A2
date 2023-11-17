@@ -32,7 +32,6 @@ const EmployeeCreate = () => {
 		const { name, value } = e.target
 		setFormData({ ...formData, [name]: value })
 	}
-	// const [createEmployee] = useMutation(CREATE_EMPLOYEE)
 	const graphqlEndpoint = 'http://localhost:4000/graphql'
 
 	const handleSubmit = async (e) => {
@@ -65,7 +64,6 @@ const EmployeeCreate = () => {
 				} else {
 					const createdEmployee = data.data.createEmployee
 					alert('Employee created successfully')
-					// Handle the created employee data as needed
 				}
 			})
 			.catch((error) => {
