@@ -16,7 +16,7 @@ mongoose.connect(
 
 async function startServer() {
 	const app = express()
-	console.log('hello')
+
 	app.use(express.json())
 	app.use(cors())
 
